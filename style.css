@@ -27,26 +27,70 @@ header {
 }
 
 footer {
-    position: fixed; /* Sticks to the bottom of the viewport */
+    position: fixed;
     bottom: 10px;
-    left: -20px;
-    width: 100%; /* Full width */
-    color: black; /* White text */
-    text-align: right; /* Center the text */
-    padding: 1rem 0; /* Some vertical padding */
+    left: 0;
+    width: 100%;
+    color: black;
+    padding: 1rem 40px;
     font-size: 1rem;
-    z-index: 1000; /* Make sure it stays on top */
+    z-index: 1000;
     font-family: "Noto Sans", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.carousel-container {
-    display: flex;
+.cheat-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    width: 100%;
-    gap: 10px;
-    position: relative;
+    width: fit-content;
+    height: fit-content;
+    transition: transform 0.1s ease, filter 0.1s ease;
+}
+
+.cheat-button:active {
+    filter: brightness(0.5);
+}
+
+.cheat-button img {
+    width: 80px;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+}
+
+
+
+/* individual button tweaks */
+#xButton {
+    margin-left: -1030px;
+}
+
+#oButton {
+    margin-left: -990px;
+}
+
+#squareButton {
+    margin-left: -950px;
+}
+
+#triangleButton {
+    margin-left: -910px;
+}
+
+
+.carousel-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* spacing between carousel and buttons */
 }
 
 button {
@@ -57,27 +101,62 @@ button {
     z-index: 10;
     color: black;
     position: absolute;
-    top: 50%;
     transform: translateY(-50%);
     user-select: none;
 }
 
+.arrow-button {
+    background: none;
+    border: none;
+    z-index: 10;
+    padding: 0;
+}
+
+.carousel-buttons {
+    display: flow;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 780px;
+}
+
 #prev {
-    left: 400px;
+    left: 246px;
 }
 
 #next {
-    right: 400px;
+    right: 264px;
 }
+
+
+/* ADD this instead to control button size if needed */
+.arrow-button img {
+    width: 48px;
+    height: auto;
+    user-select: none;
+    pointer-events: none;
+}
+
 
 
 .carousel-track-wrapper {
-    width: 600px;
+    width: 600px; /* still only "views" one */
     height: 400px;
-    overflow: hidden;
+    overflow: visible; /* allows prev/next to be visible */
     position: relative;
     margin: auto;
 }
+
+.carousel-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible; /* Make sure this also allows overflow */
+    position: relative;
+
+}
+
 
 .carousel-track {
     display: flex;
@@ -93,26 +172,37 @@ button {
     transition: transform 0.6s ease, opacity 0.6s ease;
     opacity: 0;
     transform: scale(0.6);
-    pointer-events: none; /* prevent clicks on hidden/other slides */
+    pointer-events: none; /* Don't allow clicks unless selected */
 }
 
     .project.selected {
         opacity: 1;
         transform: scale(1);
         pointer-events: auto;
+        z-index: 3;
     }
 
-    .project.prev,
+    .project.prev {
+        transform: scale(0.8) translateX(120px);
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 2;
+    }
+
     .project.next {
-        opacity: 0.5;
-        transform: scale(0.85);
-        pointer-events: auto;
+        transform: scale(0.8) translateX(-120px);
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 2;
     }
 
     .project.hidden {
         opacity: 0;
+        transform: scale(0.6);
         pointer-events: none;
+        z-index: 1;
     }
+
 
 .noto-thin {
     font-family: "Noto Sans", sans-serif;
