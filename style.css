@@ -28,14 +28,33 @@ header {
     justify-content: center;
     height: 100%;
     width: 100%;
+    gap: 10px;
 }
 
 button {
-    font-size: 2rem;
+    font-size: 3rem;
     background: none;
     border: none;
     cursor: pointer;
-    z-index: 2;
+    z-index: 10;
+    color: black;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    user-select: none;
+}
+
+#prev {
+    left: 20px;
+}
+
+#next {
+    right: 20px;
+}
+
+
+button:hover {
+    transform: scale(1.2);
 }
 
 .carousel-track-wrapper {
