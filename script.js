@@ -3,10 +3,18 @@ let currentIndex = 0;
 
 function updateCarousel() {
     projects.forEach((proj, i) => {
-        proj.classList.remove('active');
-    });
+        proj.className = 'project';
 
-    projects[currentIndex].classList.add('active');
+        if (i === currentIndex) {
+            proj.classList.add('active');
+        } else if (i === (currentIndex - 1 + projects.length) % projects.length) {
+            proj.classList.add('left');
+        } else if (i === (currentIndex + 1) % projects.length) {
+            proj.classList.add('right');
+        } else {
+            proj.classList.add('far');
+        }
+    });
 }
 
 document.getElementById('prev').addEventListener('click', () => {
