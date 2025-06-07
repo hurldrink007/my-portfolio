@@ -4,9 +4,16 @@ const total = projects.length;
 
 function updateCarousel() {
     projects.forEach((proj, i) => {
-        proj.classList.remove('active');
+        proj.className = 'project'; // Reset all classes
+
+        const diff = Math.abs(i - currentIndex);
+
         if (i === currentIndex) {
-            proj.classList.add('active');
+            proj.classList.add('center');
+        } else if (diff === 1 || diff === total - 1) {
+            proj.classList.add('near');
+        } else if (diff === 2 || diff === total - 2) {
+            proj.classList.add('far');
         }
     });
 }
