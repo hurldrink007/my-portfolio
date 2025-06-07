@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dustin Hurlbrink Portfolio</title>
+  <title>Dustin Brink | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>Dustin Hurlbrink</h1>
-    <p>Game Developer | Programmer | Artist</p>
+    <h1>Dustin Brink</h1>
   </header>
 
-  <section>
+  <main>
     <h2>Projects</h2>
-    <div class="project">
-      <h3>Valtor - Roguelike Bullet Hell</h3>
-      <p>A pixel art game inspired by Binding of Isaac and Hades.</p>
-      <a href="https://github.com/hurldrink007/Valtor" target="_blank">View on GitHub</a>
+    <div class="carousel-container">
+      <button id="prev">&#8592;</button>
+      <div class="carousel" id="carousel">
+        <!-- Project cards -->
+        <div class="project active">Project 1</div>
+        <div class="project">Project 2</div>
+        <div class="project">Project 3</div>
+      </div>
+      <button id="next">&#8594;</button>
     </div>
-
-    <!-- Add more projects here -->
-  </section>
-
-  <footer>
-    <p>© 2025 Dustin Hurlbrink</p>
-  </footer>
+  </main>
 
   <script src="script.js"></script>
 </body>
