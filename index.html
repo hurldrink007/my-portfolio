@@ -4,27 +4,31 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>dustin hurlbrink | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header>
-    <h1>dustin hurlbrink</h1>
+    <h3 class="noto-thin">dustin hurlbrink</h3>
   </header>
 
-  <main>
-    <div class="carousel-container">
-      <button id="prev">&#8592;</button>
-      <div class="carousel-track-wrapper">
-        <div class="carousel-track" id="carousel">
-          <img src="images/Music.jpg" class="project" />
-          <img src="images/Valtor.jpg" class="project" />
-          <img src="images/Valtor.jpg" class="project" />
-          <img src="images/Valtor.jpg" class="project" />
-        </div>
-      </div>
-      <button id="next">&#8594;</button>
+<div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
+  <button id="prev" style="position: absolute; top: 50%; left: -400px; transform: translateY(-50%); font-size: 2rem;">&#8592;</button>
+  <div class="carousel-track-wrapper">
+    <div class="carousel-track" id="carousel">
+      <img src="images/Valtor.jpg" class="project" />
+      <img src="images/Valtor.jpg" class="project" />
+      <img src="images/Valtor.jpg" class="project" />
+      <img src="images/Valtor.jpg" class="project" />
     </div>
-  </main>
+  </div>
+  <button id="next" style="position: absolute; top: 50%; right: -400px; transform: translateY(-50%); font-size: 2rem;">&#8594;</button>
+</div>
+
+<footer>
+  <h4 class="noto-thin">Contact</h4>
+</footer>
 
   <script src="script.js"></script>
 </body>
