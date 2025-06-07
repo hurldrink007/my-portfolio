@@ -49,17 +49,13 @@ button {
 }
 
 #prev {
-    left: 20px;
+    left: 40px;
 }
 
 #next {
-    right: 20px;
+    right: 40px;
 }
 
-
-button:hover {
-    transform: scale(1.2);
-}
 
 .carousel-track-wrapper {
     width: 600px;
