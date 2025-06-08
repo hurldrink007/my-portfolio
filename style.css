@@ -14,12 +14,14 @@ body {
     overflow: hidden;
     position: relative;
     font-family: "Noto Sans", sans-serif; /* ✅ Keep only this */
+    opacity: 1;
+    transition: opacity 0.6s ease-in-out;
 }
 
 header {
     position: absolute;
-    top: 20px;
-    right: 40px;
+    top: 10px;
+    right: 20px;
     font-size: 1rem;
     font-weight: bold;
     z-index: 100;
@@ -29,10 +31,9 @@ header {
 footer {
     position: fixed;
     bottom: 10px;
-    left: 0;
+    left: 20px;
     width: 100%;
     color: black;
-    padding: 1rem 40px;
     font-size: 1rem;
     z-index: 1000;
     font-family: "Noto Sans", sans-serif;
@@ -40,51 +41,6 @@ footer {
     justify-content: space-between;
     align-items: center;
 }
-
-.cheat-button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: fit-content;
-    height: fit-content;
-    transition: transform 0.1s ease, filter 0.1s ease;
-}
-
-.cheat-button:active {
-    filter: brightness(0.5);
-}
-
-.cheat-button img {
-    width: 80px;
-    height: auto;
-    user-select: none;
-    pointer-events: none;
-}
-
-
-
-/* individual button tweaks */
-#xButton {
-    margin-left: -1030px;
-}
-
-#oButton {
-    margin-left: -990px;
-}
-
-#squareButton {
-    margin-left: -950px;
-}
-
-#triangleButton {
-    margin-left: -910px;
-}
-
 
 .carousel-section {
     display: flex;
@@ -95,22 +51,41 @@ footer {
 
 button {
     font-size: 3rem;
-    background: none;
-    border: none;
+    border-width: 0 3px 3px 0;
     cursor: pointer;
     z-index: 10;
     color: black;
     position: absolute;
     transform: translateY(-50%);
     user-select: none;
+
+    align-content: center;
 }
 
 .arrow-button {
     background: none;
     border: none;
     z-index: 10;
-    padding: 0;
+    display: inline-block;
+    opacity: 0.3; /* ✅ Start in disabled state */
+    pointer-events: none; /* ✅ Prevent clicking */
+    transition: opacity 0.2s ease-in-out; /* ✅ Smooth fade effect */
+    transition: filter 0.15s ease-in-out; /* ✅ Smooth darkening effect */
 }
+
+    .arrow-button:active {
+        filter: brightness(60%); /* ✅ Darkens button slightly */
+    }
+
+.arrow-button {
+
+}
+
+    .arrow-button.enabled {
+        opacity: 1; /* ✅ Fade to fully visible */
+        pointer-events: auto; /* ✅ Enable clicking */
+    }
+
 
 .carousel-buttons {
     display: flow;
@@ -120,24 +95,46 @@ button {
     margin-top: 780px;
 }
 
+.advance-buttons {
+    display: flow;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 780px;
+}
+
+#forw {
+    left: 276px;
+    bottom: -10px;
+}
+
+#back {
+    left: 276px;
+    bottom: -50px;
+}
+
 #prev {
-    left: 246px;
+    left: 254px;
 }
 
 #next {
-    right: 264px;
+    right: 272px;
 }
 
 
-/* ADD this instead to control button size if needed */
+/* Ensure clickable area matches image */
 .arrow-button img {
-    width: 48px;
+    width: 30px;
     height: auto;
-    user-select: none;
-    pointer-events: none;
+    display: block; /* ✅ Avoid extra spacing */
+    pointer-events: none; /* ✅ Prevent extra hover issues */
 }
 
-
+.arrow-button.disabled {
+    filter: opacity(80%);
+    pointer-events: none;
+    cursor: default;
+}
 
 .carousel-track-wrapper {
     width: 600px; /* still only "views" one */
@@ -207,6 +204,13 @@ button {
 .noto-thin {
     font-family: "Noto Sans", sans-serif;
     font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zrnic';
+    src: url('fonts/zrnic.otf') format('truetype');
+    font-weight: normal;
     font-style: normal;
 }
 

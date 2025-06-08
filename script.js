@@ -1,9 +1,17 @@
-window.onload = () => {
+﻿window.onload = () => {
+    const buttons = document.querySelectorAll('.arrow-button');
+
+    // ✅ Add a small delay before enabling buttons to trigger transition
+    setTimeout(() => {
+        document.getElementById('prev').classList.toggle('enabled', currentIndex !== 0);
+        document.getElementById('next').classList.toggle('enabled', currentIndex !== slides.length - 1);
+        document.getElementById('forw').classList.add("enabled"); // Always enabled
+        document.getElementById('back').classList.toggle("enabled", window.location.pathname !== "/" && !window.location.pathname.includes("index.html"));
+    }, 50); // ✅ Delay allows transition to apply smoothly
+
     const track = document.getElementById('carousel');
     let slides = Array.from(track.children);
-
-    slides = Array.from(track.children); // Re-fetch with clones
-    let currentIndex = 0;
+    let currentIndex = Math.floor(slides.length / 2); // ✅ Start in the middle
     let isTransitioning = false;
 
     function updateCarousel(animate = true) {
@@ -13,7 +21,6 @@ window.onload = () => {
 
         slides.forEach((slide, index) => {
             slide.classList.remove('prev', 'next', 'selected', 'hidden');
-
             if (index === currentIndex) {
                 slide.classList.add('selected');
             } else if (index === (currentIndex - 1 + slides.length) % slides.length) {
@@ -24,19 +31,24 @@ window.onload = () => {
                 slide.classList.add('hidden');
             }
         });
+
+        // ✅ Enable the correct buttons with fade-in effect
+        setTimeout(() => {
+            document.getElementById('prev').classList.toggle('enabled', currentIndex !== 0);
+            document.getElementById('next').classList.toggle('enabled', currentIndex !== slides.length - 1);
+            document.getElementById('forw').classList.toggle('enabled', true); // Always enabled for navigation
+            document.getElementById('back').classList.toggle('enabled', window.location.pathname !== "/" && !window.location.pathname.includes("index.html"));
+        }, 200); // ✅ Delay to allow smooth fade-in
     }
+
+    updateCarousel(false);
 
     function goToNext() {
         if (isTransitioning || currentIndex === slides.length - 1) return;
         isTransitioning = true;
         currentIndex++;
         updateCarousel();
-
-        track.addEventListener('transitionend', onTransitionEndNext, { once: true });
-    }
-
-    function onTransitionEndNext() {
-        isTransitioning = false;
+        track.addEventListener('transitionend', () => { isTransitioning = false; }, { once: true });
     }
 
     function goToPrev() {
@@ -44,28 +56,43 @@ window.onload = () => {
         isTransitioning = true;
         currentIndex--;
         updateCarousel();
-
-        track.addEventListener('transitionend', onTransitionEndPrev, { once: true });
+        track.addEventListener('transitionend', () => { isTransitioning = false; }, { once: true });
     }
-
-    function onTransitionEndPrev() {
-        isTransitioning = false;
-    }
-
 
     document.getElementById('prev').addEventListener('click', goToPrev);
     document.getElementById('next').addEventListener('click', goToNext);
 
-    // Initial scroll to the real first slide (index 1)
-    updateCarousel(false);
-
-    const buttons = document.querySelectorAll('.cheat-button');
-
-    buttons.forEach(button => {
-        button.addEventListener('click', () => {
-            buttons.forEach(btn => btn.classList.remove('pressed'));
-            button.classList.add('pressed');
-        });
+    document.getElementById('forw').addEventListener('click', () => {
+        const selectedProject = document.querySelector('.project.selected');
+        if (selectedProject) {
+            const pageURL = selectedProject.getAttribute('data-url');
+            if (pageURL) {
+                document.body.style.transition = "opacity 0.6s ease-out";
+                document.body.style.opacity = "0";
+                setTimeout(() => {
+                    window.location.href = pageURL;
+                }, 600);
+            }
+        }
     });
 
+    // ✅ Fix Back Button Disable Logic
+    const backButton = document.getElementById('back');
+
+    if (backButton) {
+        const isHomePage = window.location.pathname === "/" || window.location.pathname.includes("index.html");
+
+        if (isHomePage) {
+            backButton.classList.add("disabled");
+            backButton.style.pointerEvents = "none"; // ✅ Prevents clicking
+        } else {
+            backButton.addEventListener("click", () => {
+                document.body.style.transition = "opacity 0.6s ease-out";
+                document.body.style.opacity = "0";
+                setTimeout(() => {
+                    window.location.href = "index.html";
+                }, 600);
+            });
+        }
+    }
 };
