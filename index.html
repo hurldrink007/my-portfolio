@@ -9,17 +9,29 @@
 </head>
 <body>
 
-  <header>
-    <h3 class="noto-thin">by dustin hurlbrink</h3>
-  </header>
+<header>
+    <button id="mapButton" class="map-button">
+        <img src="images/mapIcon.png" alt="Map Icon" />
+    </button>
+<button id="chaosButton" class="chaos-button">
+    <img src="images/deadpan2.png" alt="Chaos Mode" />
+</button>
+</header>
 
 <div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
   <div class="carousel-track-wrapper">
-    <div class="carousel-track" id="carousel" >
-      <img src="images/Valtor.jpg" class="project" data-url="valtor.html" />
-      <img src="images/Music.jpg" class="project" data-url="music.html" />
-      <img src="images/Handheld.jpg" class="project" data-url="handheld.html" />
+<div class="carousel-track" id="carousel">
+    <div class="project" data-url="valtor.html">
+        <img src="images/Valtor.jpg" alt="Valtor Project" />
     </div>
+    <div class="project" data-url="music.html">
+        <img src="images/Music.jpg" alt="Music Project" />
+    </div>
+    <div class="project" data-url="handheld.html">
+        <img src="images/Handheld.jpg" alt="Handheld Project" />
+    </div>
+</div>
+
   </div>
 
 <div class="carousel-buttons">
@@ -40,13 +52,27 @@
   </button>
 </div>
 
+    <section class="site-map">
+        <div class="map-container">
+            <div class="map-room" data-url="index.html">portfolio.log</div>
+            <div class="map-room" data-url="valtor.html">valtor.log</div>
+            <div class="map-room" data-url="music.html">music.log</div>
+            <div class="map-room" data-url="handheld.html">handheld.log</div>
+            <div class="map-room" data-url="contact.html">contact.log</div>
+        </div>
+    </section>
+
 <footer>
   <div class="footer-text">
-    <h4 class="noto-thin">Contact</h4>
+    <div class="location-text">
+      <h4 class="noto-thin">portfolio.log</h4>
+    <h4 class="noto-thin">by dustin hurlbrink</h4>
+    </div>
+    <button id="contactButton" class="contact-button">
+      <h4 class="noto-thin">contact</h4>
+    </button>
   </div>
-
 </footer>
-
 
   <script src="script.js"></script>
 </body>

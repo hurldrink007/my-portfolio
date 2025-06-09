@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dustin hurlbrink | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+    <button id="mapButton" class="map-button">
+        <img src="images/mapIcon.png" alt="Map Icon" />
+    </button>
+<button id="chaosButton" class="chaos-button">
+    <img src="images/deadpan2.png" alt="Chaos Mode" />
+</button>
+</header>
+
+<div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
+  <div class="carousel-track-wrapper">
+<div class="carousel-track" id="carousel">
+    <div class="project">
+    </div>
+</div>
+  </div>
+
+<div class="ipod-container">
+	<img class="square-overlay" src="images/whiteSquare.png" alt="Audio Overlay" />
+    <img class="audio-overlay" src="images/audioOverlay.png" alt="Audio Overlay" />
+    <img class="ipod" src="images/ipod.png" alt="iPod" />
+</div>
+
+<div class="ipod-ui">
+<button id="download-btn">
+    <img src="images/download.png" alt="Download">
+</button>
+
+    <div id="song-title">Loading...</div>
+
+    <audio id="audio-player"></audio>
+
+    <div class="controls">
+        <button id="prev-btn"><img src="images/ipodBack.png" alt="Previous"></button>
+        <button id="play-pause-btn"><img src="images/ipodPause.png" alt="Play/Pause"></button>
+        <button id="next-btn"><img src="images/ipodSkip.png" alt="Next"></button>
+    </div>
+
+<div id="progress-container">
+    <div id="progress-bar"></div>
+</div>
+
+</div>
+
+<div class="carousel-buttons">
+  <button id="prev" class="arrow-button">
+    <img src="images/D-PadLeft.png" alt="Previous" />
+  </button>
+  <button id="next" class="arrow-button">
+    <img src="images/D-PadRight.png" alt="Next" />
+  </button>
+</div>
+
+<div class="advance-buttons">
+  <button id="forw" class="arrow-button">
+    <img src="images/D-PadUp.png" alt="Previous" />
+  </button>
+  <button id="back" class="arrow-button">
+    <img src="images/D-PadDown.png" alt="Next" />
+  </button>
+</div>
+
+    <section class="site-map">
+        <div class="map-container">
+            <div class="map-room" data-url="index.html">portfolio.log</div>
+            <div class="map-room" data-url="valtor.html">valtor.log</div>
+            <div class="map-room" data-url="music.html">music.log</div>
+            <div class="map-room" data-url="handheld.html">handheld.log</div>
+            <div class="map-room" data-url="contact.html">contact.log</div>
+        </div>
+    </section>
+
+<footer>
+  <div class="footer-text">
+    <div class="location-text">
+      <h4 class="noto-thin">portfolio.log</h4>
+    <h4 class="noto-thin">by dustin hurlbrink</h4>
+    </div>
+    <button id="contactButton" class="contact-button">
+      <h4 class="noto-thin">contact</h4>
+    </button>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

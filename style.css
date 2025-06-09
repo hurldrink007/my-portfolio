@@ -22,25 +22,65 @@ header {
     position: absolute;
     top: 10px;
     right: 20px;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: .8rem;
     z-index: 100;
     font-family: "Noto Sans", sans-serif;
 }
 
 footer {
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
     left: 20px;
     width: 100%;
     color: black;
-    font-size: 1rem;
+    font-size: .8rem;
     z-index: 1000;
     font-family: "Noto Sans", sans-serif;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
+.location-text {
+    gap: 10px;
+    margin-bottom: -6px;
+    text-align: left;
+    margin-left: 0px; /* ✅ Moves it to the left */
+}
+
+.contact-button {
+    position: fixed;
+    bottom: 10px;
+    right: 20px; /* Ensures it's fixed at the bottom right */
+    background: none;
+    border: none;
+    font-size: .8rem;
+    font-family: "Noto Sans", sans-serif;
+    color: black;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+    .contact-button:hover {
+        opacity: 0.7; /* ✅ Slight fade effect */
+    }
+
+.home-button {
+    position: fixed;
+    bottom: 10px;
+    right: 20px; /* Ensures it's fixed at the bottom right */
+    background: none;
+    border: none;
+    font-size: .8rem;
+    font-family: "Noto Sans", sans-serif;
+    color: black;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+    .contact-button:hover {
+        opacity: 0.7; /* ✅ Slight fade effect */
+    }
 
 .carousel-section {
     display: flex;
@@ -78,14 +118,29 @@ button {
     }
 
 .arrow-button {
-
+    opacity: 0.3; /* ✅ Default disabled state */
+    pointer-events: none; /* ✅ Prevent clicking */
+    transition: opacity 0.3s ease-in-out, filter 0.15s ease-in-out; /* ✅ Ensures fading effect */
 }
 
     .arrow-button.enabled {
-        opacity: 1; /* ✅ Fade to fully visible */
-        pointer-events: auto; /* ✅ Enable clicking */
+        opacity: 1; /* ✅ Smooth transition to enabled */
+        pointer-events: auto; /* ✅ Allow clicking */
     }
 
+    .arrow-button.disabled {
+        filter: opacity(80%);
+        pointer-events: none;
+        cursor: default;
+    }
+
+    /* Ensure clickable area matches image */
+    .arrow-button img {
+        width: 30px;
+        height: auto;
+        display: block; /* ✅ Avoid extra spacing */
+        pointer-events: none; /* ✅ Prevent extra hover issues */
+    }
 
 .carousel-buttons {
     display: flow;
@@ -104,36 +159,21 @@ button {
 }
 
 #forw {
-    left: 276px;
+    left: 286px;
     bottom: -10px;
 }
 
 #back {
-    left: 276px;
+    left: 286px;
     bottom: -50px;
 }
 
 #prev {
-    left: 254px;
+    left: 264px;
 }
 
 #next {
-    right: 272px;
-}
-
-
-/* Ensure clickable area matches image */
-.arrow-button img {
-    width: 30px;
-    height: auto;
-    display: block; /* ✅ Avoid extra spacing */
-    pointer-events: none; /* ✅ Prevent extra hover issues */
-}
-
-.arrow-button.disabled {
-    filter: opacity(80%);
-    pointer-events: none;
-    cursor: default;
+    left: 309px;
 }
 
 .carousel-track-wrapper {
@@ -154,14 +194,33 @@ button {
 
 }
 
-
 .carousel-track {
     display: flex;
     transition: transform 0.6s ease-in-out;
     height: 100%;
 }
 
+.project-description {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    position: absolute;
+    bottom: -70px;
+    left: 25%;
+    text-align: center;
+    font-size: 1rem;
+    color: black;
+    padding: 5px 10px;
+    width: 300px;
+    word-wrap: break-word;
+}
+
+.project.selected .project-description {
+    opacity: 1;
+}
+
+
 .project {
+    position: relative;
     width: 600px;
     height: 100%;
     object-fit: contain;
@@ -181,14 +240,14 @@ button {
 
     .project.prev {
         transform: scale(0.8) translateX(120px);
-        opacity: 0.3;
+        opacity: 0;
         pointer-events: none;
         z-index: 2;
     }
 
     .project.next {
         transform: scale(0.8) translateX(-120px);
-        opacity: 0.3;
+        opacity: 0;
         pointer-events: none;
         z-index: 2;
     }
@@ -200,6 +259,262 @@ button {
         z-index: 1;
     }
 
+    .project img {
+        max-width: 50%;
+        height: auto;
+        display: block;
+        margin: auto; /* Ensures centering */
+    }
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; /* ✅ Keeps it within bounds */
+    width: 100vw; /* ✅ Responsive */
+}
+
+    .image-container img {
+        max-width: 600px; /* ✅ Limits max width */
+        max-height: 400px; /* ✅ Limits max height */
+        object-fit: contain; /* ✅ Ensures the image stays within the defined area */
+    }
+
+.map-button {
+    position: fixed;
+    top: 20px;
+    left: 10px; /* Ensures it's snapped to the top left */
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+    z-index: 1000; /* Makes sure it's visible */
+}
+
+    .map-button img {
+        width: 25px; /* Adjust size as needed */
+        height: auto;
+    }
+
+    .map-button:hover {
+        opacity: 1;
+    }
+
+.site-map {
+    font-family: "Noto Sans", sans-serif;
+    position: fixed; /* ✅ Keeps it independent */
+    top: 5px;
+    left: 40px; /* ✅ Adjust positioning */
+    width: auto;
+    padding: 10px;
+    z-index: 0; /* ✅ Ensures it’s above other elements */
+    display: none; /* ✅ Starts hidden */
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+}
+
+    .site-map.visible {
+        display: block;
+        opacity: 1; /* ✅ Fade-in effect */
+    }
+
+.map-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto); /* Adjust grid layout as needed */
+    gap: 5px; /* Space between elements */
+}
+
+.map-room {
+    padding: 5px;
+    font-size: 0.6rem;
+    text-align: center;
+    border: 0.5px solid rgba(0, 0, 0, 0.5); /* ✅ Border with 80% opacity */
+    background-color: rgba(255, 255, 255, 0.1); /* ✅ Slightly transparent white background */
+    color: rgba(0, 0, 0, 0.5); /* ✅ Font with 80% opacity */
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+    .map-room:hover {
+        transform: scale(1.1);
+        background-color: rgba(211, 211, 211, 0.2); /* ✅ Lighter shade for hover with 80% opacity */
+    }
+
+.ipod-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Set a reasonable width */
+    height: auto;
+    text-shadow: none;
+    box-shadow: none;
+}
+
+
+.ipod {
+    position: absolute; /* Enables layering */
+    width: 100%; /* Ensures both images match the container size */
+    height: auto;
+}
+
+.audio-overlay {
+    position: absolute; /* Enables layering */
+    width: 30%; /* Ensures both images match the container size */
+    height: auto;
+    left: 55%;
+    margin-bottom: 50%;
+    opacity: .8;
+}
+
+.square-overlay {
+    position: absolute; /* Enables layering */
+    width: 53%; /* Ensures both images match the container size */
+    height: auto;
+    left: 35%;
+    margin-bottom: 40%;
+    opacity: .8;
+}
+
+.ipod-ui {
+    position: absolute;
+    top: 50.3%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    padding: 10px;
+    color: black;
+    opacity: .5;
+    font-size: .5rem;
+    text-align: center;
+    text-shadow: none;
+    box-shadow: none;
+    background: none;
+}
+
+#song-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+    #song-list li {
+        padding: 5px;
+        cursor: pointer;
+    }
+
+.controls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    width: 30px; /* Shrinks button size */
+    height: 30px;
+}
+
+    .controls button img {
+        width: 310%; /* Makes sure the image fits inside the button */
+        height: auto;
+        display: block;
+    }
+
+
+#prev-btn {
+    position: absolute;
+    left: 26px;
+    bottom: -68px;
+}
+
+#play-pause-btn {
+    position: absolute;
+    left: 91px;
+    bottom: -99px;
+    transform: translateX(-50%);
+}
+
+#next-btn {
+    position: absolute;
+    right: 97px;
+    bottom: -70px;
+}
+
+#song-title {
+    text-align: left;
+    position: absolute;
+    top: -45px;
+    left: 36px; /* Ensures it stays within bounds */
+    max-width: 90%; /* Prevents text from overflowing */
+    white-space: nowrap; /* Keeps text in one line */
+    overflow: hidden; /* Hides excess text */
+    text-overflow: ellipsis; /* Adds "..." when text is too long */
+}
+
+#progress-container {
+    width: 70%;
+    height: 3px;
+    background: #ddd; /* Background of the progress bar */
+    position: absolute;
+    bottom: 50px; /* Adjust based on your layout */
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background: black; /* The moving bar color */
+    transition: width 0.1s linear;
+}
+
+#download-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    #download-btn img {
+        width: 30px; /* Adjust as needed */
+        height: 30px;
+        display: block;
+        margin-bottom: -1600%;
+        margin-left: 670%;
+    }
+
+
+    #download-btn:hover {
+        background: white;
+        color: black;
+    }
+
+
+.chaos-button {
+    top: 13px;
+    left: -27px; /* Adjust placement */
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.3s ease-in-out;
+}
+
+    .chaos-button img {
+        width: 25px; /* Adjust size */
+        height: auto;
+    }
+
+    .chaos-button:hover {
+        opacity: 1;
+    }
 
 .noto-thin {
     font-family: "Noto Sans", sans-serif;
@@ -207,11 +522,18 @@ button {
     font-style: normal;
 }
 
-@font-face {
-    font-family: 'Zrnic';
-    src: url('fonts/zrnic.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
+.contact-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers text horizontally */
+    justify-content: center; /* Centers text vertically */
+    height: 100vh; /* Ensures full-page centering */
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 200; /* Light text weight */
+    text-align: center;
+    font-size: 1rem;
 }
+
 
 
