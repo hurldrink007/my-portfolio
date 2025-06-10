@@ -1,19 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dustin hurlbrink | contact</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dustin hurlbrink | Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
+<header>
+    <button id="mapButton" class="map-button">
+        <img src="images/mapIcon.png" alt="Map Icon" />
+    </button>
+<button id="chaosButton" class="chaos-button">
+    <img src="images/deadpan2.png" alt="Chaos Mode" />
+</button>
 </header>
-    <div class="contact-info">
-        <p>2674909554</p>
-        <p>hurlbrinkd@gmail.com</p>
+
+<div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
+  <div class="carousel-track-wrapper">
+<div class="carousel-track" id="carousel">
+    <div class="project" data-url="valtor.html">
     </div>
+</div>
+
+  </div>
+
+    <section class="site-map">
+        <div class="map-container">
+            <div class="map-room" data-url="index.html">portfolio.log</div>
+            <div class="map-room" data-url="valtor.html">valtor.log</div>
+            <div class="map-room" data-url="music.html">music.log</div>
+            <div class="map-room" data-url="handheld.html">handheld.log</div>
+            <div class="map-room" data-url="contact.html">contact.log</div>
+        </div>
+    </section>
 
 <footer>
   <div class="footer-text">
@@ -26,7 +48,15 @@
     </button>
   </div>
 </footer>
-<script src="script.js"></script>
+
+  <script src="script.js"></script>
 </body>
 </html>
 
+
+
+
+    <div class="contact-info">
+        <p>2674909554</p>
+        <p>hurlbrinkd@gmail.com</p>
+    </div>
