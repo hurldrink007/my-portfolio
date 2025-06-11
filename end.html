@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Congratulations - You Win</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet" />
+  <style>
+    /* Base styling matching your portfolio */
+    body {
+      margin: 0;
+      background: white;
+      font-family: 'Noto Sans', sans-serif;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      user-select: none;
+      font-weight: 200;
+      font-size: 3rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 0.5rem;
+    }
+
+    /* Confetti styles */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background-color: red;
+      opacity: 0.9;
+      top: 0;
+      pointer-events: none;
+      animation-name: fall;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      transform-origin: center;
+      border-radius: 2px;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* The return link */
+    a.return-link {
+      font-weight: 200;
+      font-size: 1.5rem;
+      color: black;
+      margin-top: 2rem;
+      text-decoration: none;
+      cursor: pointer;
+      user-select: none;
+    }
+    a.return-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer fixed bottom left */
+    footer {
+      position: fixed;
+      bottom: 0.3rem;
+      left: 1rem;
+      font-weight: 100;
+      font-size: 0.8rem;
+      color: black;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div>congratulations. you win</div>
+
+  <a href="index.html" class="return-link">return</a>
+
+  <footer>
+    <div class="footer-text">
+      <div class="location-text">
+        <h4 class="noto-thin">end.log</h4>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Confetti colors matching your vibe (adjust if you want)
+    const colors = ['#e63946', '#f1faee', '#a8dadc', '#457b9d', '#ffb703', '#fb8500'];
+
+    function createConfettiPiece() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.width = confetti.style.height = (Math.random() * 8 + 4) + 'px';
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      confetti.style.animationDelay = (Math.random() * 5) + 's';
+      confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px'; // some circles, some squares
+      document.body.appendChild(confetti);
+
+      // Remove confetti after animation ends
+      confetti.addEventListener('animationend', () => {
+        confetti.remove();
+      });
+    }
+
+    // Create multiple confetti pieces over time
+    setInterval(() => {
+      createConfettiPiece();
+    }, 150);
+  </script>
+</body>
+</html>

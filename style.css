@@ -391,6 +391,28 @@ button {
         background-color: rgba(211, 211, 211, 0.2); /* ✅ Lighter shade for hover with 80% opacity */
     }
 
+.instagram-button img {
+    width: 25px;
+    height: auto;
+    margin-left: 5px;
+    margin-top: 5px;
+    vertical-align: middle;
+    opacity: 0.4;
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+    display: inline-block;
+}
+
+    .instagram-button img:hover {
+        opacity: 1;
+    }
+
+.instagram-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
 .ipod-container {
     display: flex;
     justify-content: center;
@@ -492,6 +514,28 @@ button {
     bottom: -70px;
 }
 
+#prev-btn,
+#play-pause-btn,
+#next-btn {
+    cursor: pointer;
+    transition: filter 0.15s ease;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+    #prev-btn:hover,
+    #play-pause-btn:hover,
+    #next-btn:hover {
+        filter: brightness(0.8);
+    }
+
+    #prev-btn:active,
+    #play-pause-btn:active,
+    #next-btn:active {
+        filter: brightness(0.6);
+    }
+
 #song-title {
     text-align: left;
     position: absolute;
@@ -546,6 +590,63 @@ button {
         color: black;
     }
 
+.music-controls {
+    position: absolute;
+    top: 0; /* or whatever anchors it properly */
+    width: 100%; /* ensures flex children can space out */
+    display: flex;
+    justify-content: center;
+    margin-top: -50px;
+    z-index: 10; /* optional: make sure it's above other stuff */
+}
+
+.music-control-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+    .music-control-button img {
+        width: 35px;
+        height: auto;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+
+        .music-control-button img:hover {
+            opacity: 1;
+        }
+
+    .music-control-button.active img {
+        opacity: 1 !important;
+        filter: drop-shadow(0 0 5px #fff);
+    }
+
+
+.shuffle-button {
+
+    margin-right: -145px;
+    margin-top: 185px;
+    transform: translateX(-30px); /* Example: move left */
+}
+    .shuffle-button img {
+        width: 30px;
+        height: auto;
+    }
+
+.loop-button {
+    margin-top: 185px;
+    margin-right: 95px;
+    transform: translateY(5px); /* Example: move down slightly */
+}
+
+.soundcloud-button {
+    margin-top: 195px;
+    margin-right: 65px;
+    transform: translateX(30px); /* Example: move right */
+}
+
 
 .chaos-button {
     top: 13px;
@@ -584,6 +685,141 @@ button {
     text-align: center;
     font-size: 1rem;
 }
+
+#heartIcon {
+    display: none;
+    cursor: pointer;
+    height: 20px;
+    margin-right: 10px;
+    transition: transform 0.2s ease;
+}
+
+    #heartIcon:hover {
+        transform: scale(1.1);
+    }
+
+/* Position and layout for heart container */
+#heart-container {
+    position: absolute;
+    bottom: 120px; /* adjust to move up/down */
+    left:47%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+/* Size and style for heart image */
+#heart-image {
+    width: 600px; /* adjust size */
+    height: auto;
+    transition: filter 0.2s ease;
+}
+
+/* Style for BPM input */
+#bpm-input {
+    margin-left: 5%;
+    margin-top: 8px;
+    padding: 4px;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    width: 60px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: lightgray;
+    color: white;
+}
+
+
+
+.random-text {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers text horizontally */
+    justify-content: center; /* Centers text vertically */
+    height: 100vh; /* Ensures full-page centering */
+    font-family: 'Noto Sans', sans-serif;
+    font-weight: 200; /* Light text weight */
+    text-align: center;
+    font-size: 1rem;
+    left: 284px;
+}
+
+body.cortana-page {
+    overflow: hidden;
+    position: relative;
+    background-size: cover; /* Cover the whole page */
+    background-repeat: no-repeat; /* Don't repeat the image */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Optional: makes background stay on scroll */
+}
+
+#glitch-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.glitch-image {
+    position: absolute;
+    width: 80px;
+    opacity: 1;
+    user-select: none;
+    pointer-events: none;
+    will-change: transform, opacity;
+}
+
+.glitch-text-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 900;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.glitch-text {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: bold;
+    color: lightgray;
+    opacity: 1;
+    user-select: none;
+}
+
+
+
+#cortana-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    right: 1300px;
+}
+
+    #cortana-button img {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        height: 1000px; /* Try reducing this */
+        z-index: -999;
+        image-rendering: pixelated;
+    }
+
+
+
+
+
+
+
+
+
 
 
 

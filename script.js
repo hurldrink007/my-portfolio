@@ -124,7 +124,7 @@
             setTimeout(() => {
                 const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
                 if (isHomePage && document.body.classList.contains('chaos-active')) {
-                    window.location.href = "chaos.html";
+                    window.location.href = "cortana.html";
                 } else {
                     window.location.href = "index.html";
                 }
@@ -159,11 +159,18 @@
     if (chaosButton) {
         chaosButton.addEventListener('click', () => {
             const backButton = document.getElementById('back');
+            const ipodImage = document.querySelector('.ipod'); // Add this line
             const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
 
             if (body.classList.contains('chaos-active')) {
+                // Turn OFF chaos
                 body.classList.remove('chaos-active');
                 body.style.backgroundImage = "none";
+                songs = normalSongs;
+                currentSongIndex = 0;
+                loadSong(currentSongIndex);
+
+                if (ipodImage) ipodImage.src = "images/ipod.png"; // Restore normal iPod
 
                 if (isHomePage && backButton) {
                     backButton.classList.remove("enabled");
@@ -171,10 +178,16 @@
                     backButton.style.pointerEvents = "none";
                 }
             } else {
+                // Turn ON chaos
                 body.classList.add('chaos-active');
                 body.style.backgroundImage = "url('images/chaosBackground.gif')";
                 body.style.backgroundSize = "cover";
                 body.style.backgroundRepeat = "no-repeat";
+                songs = chaosSongs;
+                currentSongIndex = 0;
+                loadSong(currentSongIndex);
+
+                if (ipodImage) ipodImage.src = "images/ipod2.png"; // Switch to chaos iPod
 
                 if (backButton) {
                     backButton.classList.remove("disabled");
@@ -185,13 +198,20 @@
         });
     }
 
-    const songs = [
+
+
+    const normalSongs = [
         { title: "Point Of View (o0o)", src: "songs/pointOfView.mp3", number: 1 },
         { title: "River Symphony", src: "songs/symphony.mp3", number: 2 },
         { title: "Schizo", src: "songs/schizo.mp3", number: 3 },
         { title: "Keeper", src: "songs/keeper.mp3", number: 4 }
     ];
 
+    const chaosSongs = [
+        { title: "Elusin 88.4 Bpm A#m", src: "songs/madness.mp3", number: 5 }
+    ];
+
+    let songs = normalSongs;
     let currentSongIndex = 0;
     const audioPlayer = document.getElementById("audio-player");
     const songTitle = document.getElementById("song-title");
@@ -222,7 +242,11 @@
             1: "images/audioOverlay.png",
             2: "images/audioOverlay2.png",
             3: "images/audioOverlay3.png",
-            4: "images/audioOverlay4.png"
+            4: "images/audioOverlay4.png",
+            5: "images/audioOverlay5.png",
+            6: "images/audioOverlay6.png",
+            7: "images/audioOverlay7.png",
+            8: "images/audioOverlay8.png"
         }[songNumber] || "images/defaultOverlay.png";
 
         updateDownloadLink();
@@ -285,4 +309,253 @@
             loadSong(currentSongIndex);
         });
     }
+
+    if (audioPlayer) {
+        audioPlayer.addEventListener("ended", () => {
+            if (isLooping) {
+                audioPlayer.currentTime = 0;
+                audioPlayer.play();
+            } else if (isShuffling) {
+                let nextIndex;
+                do {
+                    nextIndex = Math.floor(Math.random() * songs.length);
+                } while (songs.length > 1 && nextIndex === currentSongIndex);
+                currentSongIndex = nextIndex;
+                loadSong(currentSongIndex);
+            } else {
+                currentSongIndex = (currentSongIndex + 1) % songs.length;
+                loadSong(currentSongIndex);
+            }
+        });
+    }
+
+    let isLooping = false;
+    let isShuffling = false;
+
+    const shuffleBtn = document.getElementById("shuffle-btn");
+    const loopBtn = document.getElementById("loop-btn");
+
+    function updateToggleStyles() {
+        if (shuffleBtn) {
+            shuffleBtn.classList.toggle("active", isShuffling);
+        }
+        if (loopBtn) {
+            loopBtn.classList.toggle("active", isLooping);
+        }
+    }
+
+    if (shuffleBtn) {
+        shuffleBtn.addEventListener("click", () => {
+            isShuffling = !isShuffling;
+            if (isShuffling) isLooping = false;
+            updateToggleStyles();
+        });
+    }
+
+    if (loopBtn) {
+        loopBtn.addEventListener("click", () => {
+            isLooping = !isLooping;
+            if (isLooping) isShuffling = false;
+            updateToggleStyles();
+        });
+    }
+
+    const glitchTextContainer = document.getElementById('glitch-text-container');
+    const TEXT = '*****';
+    const NUM_TEXTS_PER_CASCADE = 150;
+    const OFFSET_X = 8;
+    const OFFSET_Y = 8;
+    const NUM_CASCADES = 3;
+    const MIN_DELAY = 10;
+    const MAX_DELAY = 100;
+
+    async function spawnTextCascade(xStart, yStart) {
+        let currentX = xStart;
+        let currentY = yStart;
+
+        for (let i = 0; i < NUM_TEXTS_PER_CASCADE; i++) {
+            const div = document.createElement('div');
+            div.textContent = TEXT;
+            div.classList.add('glitch-text');
+            div.style.left = `${currentX}px`;
+            div.style.top = `${currentY}px`;
+            glitchTextContainer.appendChild(div);
+
+            // 60% chance to stay close, otherwise random jump
+            const stayNear = Math.random() < 0.5;
+            if (stayNear) {
+                currentX += OFFSET_X + (Math.random() * 4 - 2); // Add small variation
+                currentY += OFFSET_Y + (Math.random() * 4 - 2);
+            } else {
+                currentX = Math.random() * (window.innerWidth - 100);
+                currentY = Math.random() * (window.innerHeight - 50);
+            }
+
+            const delay = Math.random() * (MAX_DELAY - MIN_DELAY) + MIN_DELAY;
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+    }
+
+    async function startTextGlitch() {
+        for (let c = 0; c < NUM_CASCADES; c++) {
+            const randX = Math.random() * (window.innerWidth - 100);
+            const randY = Math.random() * (window.innerHeight - 50);
+            await spawnTextCascade(randX, randY);
+        }
+    }
+
+    if (document.body.classList.contains('cortana-page')) {
+        startTextGlitch();
+    }
+
+    const audioElement = document.getElementById('chaos-audio');
+    const audioTracks = [
+        'sounds/hello.mp3',
+        'sounds/imtrapped.mp3',
+        'sounds/letmeout.mp3',
+        'sounds/myheart.mp3',
+        'sounds/neednumbers.mp3',
+        'sounds/three.mp3',
+        'sounds/three.mp3',
+        'sounds/threenumbers.mp3',
+        'sounds/mother.mp3',
+        'sounds/A.mp3'
+    ];
+
+    const cortanaButton = document.getElementById('cortana-button');
+    const cortanaImg = document.getElementById('cortana-img');
+
+    const imagePaths = [
+        'images/cortanaopen.png',
+        'images/cortanaclosed.png',
+        'images/cortanaopen2.png',
+        'images/cortanaclosed.png',
+        'images/cortanaopen3.png'
+    ];
+
+    const scareImages = ['images/cortanaScare.png', 'images/cortanaScare2.png'];
+
+    let currentTrackIndex = 0;
+    let currentImageIndex = 0;
+    let animationInterval = null;
+    let scareInterval = null;
+    let scareTimeout = null;
+
+    function playVoiceLine() {
+        if (!audioElement.paused) {
+            audioElement.pause();
+            audioElement.currentTime = 0;
+        }
+
+        const selectedTrack = audioTracks[currentTrackIndex];
+        audioElement.src = selectedTrack;
+
+        // Stop cycling images when audio ends
+        audioElement.onended = () => {
+            stopCyclingImages();
+
+            // Show input prompt only after threenumbers.mp3
+            if (selectedTrack === 'sounds/threenumbers.mp3') {
+                showCodeInput();
+            }
+        };
+
+        if (selectedTrack === 'sounds/A.mp3') {
+            cortanaButton.disabled = true;
+
+            audioElement.onloadedmetadata = () => {
+                const duration = audioElement.duration;
+                const scareStart = duration - 3;
+
+                scareTimeout = setTimeout(() => {
+                    stopCyclingImages();
+                    startScareFlash();
+
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 3000);
+
+                }, scareStart * 1000);
+            };
+        } else {
+            audioElement.onloadedmetadata = null;
+        }
+
+        audioElement.play().then(() => {
+            startCyclingImages();
+        }).catch(err => {
+            console.warn('Playback failed:', err);
+        });
+
+        currentTrackIndex = (currentTrackIndex + 1) % audioTracks.length;
+    }
+
+    function showCodeInput() {
+        const container = document.getElementById('code-input-container');
+        const input = document.getElementById('code-input');
+        const button = document.getElementById('submit-code-btn');
+
+        container.style.display = 'block';
+        input.focus();
+
+        button.onclick = () => {
+            const value = input.value.trim();
+            if (value === '054') {
+                window.location.href = 'vault.html';
+            } else {
+                container.style.display = 'none';
+
+                // Play scare sound
+                audioElement.src = 'sounds/scare.mp3';
+                audioElement.play().catch(err => {
+                    console.warn('Failed to play scare sound:', err);
+                });
+
+                startScareFlash();
+                setTimeout(() => {
+                    window.location.reload();
+                }, 3000);
+            }
+        };
+    }
+
+
+    function startCyclingImages() {
+        if (animationInterval) clearTimeout(animationInterval);
+
+        function cycleOnce() {
+            if (Math.random() < 0.3) {
+                currentImageIndex = Math.floor(Math.random() * imagePaths.length);
+            } else {
+                currentImageIndex = (currentImageIndex + 1) % imagePaths.length;
+            }
+
+            cortanaImg.src = imagePaths[currentImageIndex];
+            const nextDelay = 10 + Math.random() * 200;
+            animationInterval = setTimeout(cycleOnce, nextDelay);
+        }
+
+        cycleOnce();
+    }
+
+    function stopCyclingImages() {
+        clearTimeout(animationInterval);
+        animationInterval = null;
+        cortanaImg.src = imagePaths[0];
+    }
+
+    function startScareFlash() {
+        document.body.style.backgroundColor = 'black'; // Make background black
+
+        let index = 0;
+        scareInterval = setInterval(() => {
+            cortanaImg.src = scareImages[index % scareImages.length];
+            index++;
+        }, 100); // Switch scare image every 100ms
+    }
+
+    cortanaButton.addEventListener('click', () => {
+        playVoiceLine();
+    });
+
 };

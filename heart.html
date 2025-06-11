@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dustin hurlbrink | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
+  <div class="carousel-track-wrapper">
+<div class="carousel-track" id="carousel">
+    <div class="project">
+    </div>
+</div>
+
+  </div>
+
+<div id="heart-container">
+  <img id="heart-image" src="images/heart.png" alt="Heart" />
+  <div>
+    <input type="number" id="bpm-input" min="30" max="200" placeholder="90" />
+  </div>
+</div>
+
+<audio id="up-beat-audio" src="sounds/upBeat.mp3"></audio>
+<audio id="down-beat-audio" src="sounds/downBeat.mp3"></audio>
+
+
+
+<div class="carousel-buttons">
+  <button id="prev" class="arrow-button">
+    <img src="images/D-PadLeft.png" alt="Previous" />
+  </button>
+  <button id="next" class="arrow-button">
+    <img src="images/D-PadRight.png" alt="Next" />
+  </button>
+</div>
+
+<div class="advance-buttons">
+  <button id="forw" class="arrow-button">
+    <img src="images/D-PadUp.png" alt="Previous" />
+  </button>
+  <button id="back" class="arrow-button">
+    <img src="images/D-PadDown.png" alt="Next" />
+  </button>
+</div>
+
+
+<footer>
+  <div class="footer-text">
+    <div class="location-text">
+      <h4 class="noto-thin">heart.log</h4>
+    </div>
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const heartImg = document.getElementById('heart-image');
+  const bpmInput = document.getElementById('bpm-input');
+  const upBeatAudio = document.getElementById('up-beat-audio');
+  const downBeatAudio = document.getElementById('down-beat-audio');
+
+  let bpm = 90;
+  let beatInterval = null;
+
+  function startHeartBeat(bpmValue) {
+    if (beatInterval) clearInterval(beatInterval);
+
+    let normalHeart = 'images/heart.png';
+    let beatHeart = 'images/heartbeat.png';
+
+    if (Math.abs(bpmValue - 84.4) < 0.1) {
+      normalHeart = 'images/heartOpen.png';
+      beatHeart = 'images/heartOpenBeat.png';
+    }
+
+    const delay = (60 / bpmValue) * 1000;
+
+    beatInterval = setInterval(() => {
+      heartImg.src = beatHeart;
+      upBeatAudio.currentTime = 0;
+      upBeatAudio.play();
+
+      setTimeout(() => {
+        heartImg.src = normalHeart;
+        downBeatAudio.currentTime = 0;
+        downBeatAudio.play();
+      }, delay / 2);
+    }, delay);
+  }
+
+  startHeartBeat(bpm);
+
+  bpmInput.addEventListener('input', () => {
+    const value = parseFloat(bpmInput.value);
+    if (!isNaN(value) && value >= 30 && value <= 200) {
+      bpm = value;
+      startHeartBeat(bpm);
+    }
+  });
+});
+</script>
+
+
+
+
