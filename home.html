@@ -3,40 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>dustin hurlbrink | valtor</title>
+  <title>dustin hurlbrink | home</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-    <button id="mapButton" class="map-button">
-        <img src="images/mapIcon.png" alt="Map Icon" />
-    </button>
+  <button id="mapButton" class="map-button">
+    <img src="images/mapIcon.png" alt="Map Icon" />
+  </button>
+
 <button id="chaosButton" class="chaos-button">
-    <img src="images/deadpan2.png" alt="Chaos Mode" />
+  <img src="images/deadpan2.png" alt="Chaos Mode" />
 </button><a href="https://www.instagram.com/dustin.hurlbrink/" target="_blank" class="instagram-button">
   <img src="images/instagram.png" alt="Instagram Profile" />
 </a>
 </header>
 
+
 <div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
   <div class="carousel-track-wrapper">
 <div class="carousel-track" id="carousel">
-    <div class="gameImg">
-        <img src="images/valtorblood.jpg" alt="Valtor Game" />
+    <div class="project" data-url="valtor.html">
+        <img src="images/Valtor.jpg" alt="Valtor Project" />
     </div>
-    <div class="gameImg">
-        <img src="images/valtorbook.jpg" alt="Valtor Game" />
+    <div class="project" data-url="music.html">
+        <img src="images/Music.jpg" alt="Music Project" />
     </div>
-    <div class="gameImg">
-        <img src="images/valtorpool.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtorboss.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtoringame.jpg" alt="Valtor Game" />
+    <div class="project" data-url="handheld.html">
+        <img src="images/Handheld.jpg" alt="Handheld Project" />
     </div>
 </div>
 
@@ -77,47 +73,18 @@
 <footer>
   <div class="footer-text">
     <div class="location-text">
-      <h4 class="noto-thin">valtor.log</h4>
-      <h4 class="noto-thin">a game by dustin hurlbrink</h4>
+      <h4 class="noto-thin">portfolio.log</h4>
+    <h4 class="noto-thin">by dustin hurlbrink</h4>
     </div>
     <button id="contactButton" class="contact-button">
       <h4 class="noto-thin">contact</h4>
     </button>
-
-    <!-- Heart Icon (initially hidden) -->
-    <img id="heartIcon" src="images/heartIcon.png" alt="Heart Icon"
-         style="display: none; cursor: pointer;" />
   </div>
 </footer>
-
 
   <script src="script.js"></script>
 </body>
 </html>
-
-<script>
-const heartIcon = document.getElementById('heartIcon');
-const chaosButton = document.getElementById('chaosButton');
-
-function isOnValltorPage() {
-    const path = window.location.pathname;
-    return path.includes('valtor.html');
-}
-
-function updateHeartIconVisibility() {
-    const isChaos = document.body.classList.contains('chaos-mode');
-    heartIcon.style.display = (isChaos && isOnValltorPage()) ? 'inline' : 'none';
-}
-
-chaosButton.addEventListener('click', () => {
-    document.body.classList.toggle('chaos-mode');
-    updateHeartIconVisibility();
-});
-
-heartIcon.addEventListener('click', () => {
-    window.location.href = 'heart.html';
-});
-</script>
 
 <script>
 document.querySelectorAll('.map-room').forEach(room => {
@@ -129,3 +96,4 @@ document.querySelectorAll('.map-room').forEach(room => {
     });
 });
 </script>
+

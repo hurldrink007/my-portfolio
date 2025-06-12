@@ -117,7 +117,7 @@
 
     function isHomePage() {
         const path = window.location.pathname;
-        return path === "/" || path.endsWith("/index.html") || path.endsWith("index.html");
+        return path === "/" || path.endsWith("/home.html") || path.endsWith("home.html");
     }
 
 
@@ -131,7 +131,7 @@
                 if (isHomePage() && document.body.classList.contains('chaos-active')) {
                     window.location.href = "cortana.html";
                 } else {
-                    window.location.href = "index.html";
+                    window.location.href = "home.html";
                 }
             }, 600);
         });
@@ -155,7 +155,7 @@
     const homeButton = document.getElementById('homeButton');
     if (homeButton) {
         homeButton.addEventListener('click', () => {
-            window.location.href = "index.html";
+            window.location.href = "home.html";
         });
     }
 
@@ -165,7 +165,7 @@
         chaosButton.addEventListener('click', () => {
             const backButton = document.getElementById('back');
             const ipodImage = document.querySelector('.ipod'); // Add this line
-            const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
+            const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("home.html");
 
             if (body.classList.contains('chaos-active')) {
                 // Turn OFF chaos
