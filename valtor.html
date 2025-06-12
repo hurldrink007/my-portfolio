@@ -67,10 +67,10 @@
             <div class="map-room" data-url="music.html">music.log</div>
             <div class="map-room" data-url="handheld.html">handheld.log</div>
             <div class="map-room" data-url="contact.html">contact.log</div>
-		<div class="map-room" data-url="h****.html">h****.log</div>
-		<div class="map-room" data-url="c******.html">c******.log</div>
-		<div class="map-room" data-url="v****.html">v****.log</div>
-		<div class="map-room" data-url="e**.html">e**.log</div>
+		<div class="map-room" data-url="error.html">h****.log</div>
+		<div class="map-room" data-url="error.html">c******.log</div>
+		<div class="map-room" data-url="error.html">v****.log</div>
+		<div class="map-room" data-url="error.html">e**.log</div>
         </div>
     </section>
 
@@ -116,5 +116,16 @@ chaosButton.addEventListener('click', () => {
 
 heartIcon.addEventListener('click', () => {
     window.location.href = 'heart.html';
+});
+</script>
+
+<script>
+document.querySelectorAll('.map-room').forEach(room => {
+    room.addEventListener('click', () => {
+        const url = room.getAttribute('data-url');
+        if (url) {
+            window.location.href = url;
+        }
+    });
 });
 </script>

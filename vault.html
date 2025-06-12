@@ -135,8 +135,8 @@ footer {
 <body>
 
 <div id="health-bar" style="margin-bottom: 80px;">
-  <img src="images/heart.png" id="heart1" style="width: 40px; margin-right: 5px;">
-  <img src="images/heart.png" id="heart2" style="width: 40px;">
+  <img src="images/HEART.png" id="heart1" style="width: 40px; margin-right: 5px;">
+  <img src="images/HEART.png" id="heart2" style="width: 40px;">
 </div>
 
   <div class="image-container">
@@ -150,7 +150,7 @@ footer {
   <div class="inventory" id="inventory">
     <button class="item-btn" onclick="useItem(0)"><img src="images/eyeItem.png" alt="eye"></button>
     <button class="item-btn" onclick="useItem(1)"><img src="images/fireballItem.png" alt="fireball"></button>
-    <button class="item-btn" onclick="useItem(2)"><img src="images/deerItem.png" alt="rotten-buck"></button>
+    <button class="item-btn" onclick="useItem(2)"><img src="images/DeerItem.png" alt="rotten-buck"></button>
     <button class="item-btn" onclick="useItem(3)"><img src="images/frogItem.png" alt="frog"></button>
     <button class="item-btn" onclick="useItem(4)"><img src="images/gunItem.png" alt="gun"></button>
     <button class="item-btn" onclick="useItem(5)"><img src="images/bandageItem.png" alt="bandage"></button>
@@ -268,7 +268,7 @@ monsterAttackSound.play();
   const itemImages = [
     'images/eyeItem.png',
     'images/fireballItem.png',
-    'images/deerItem.png',
+    'images/DeerItem.png',
     'images/frogItem.png',
     'images/gunItem.png',
     'images/bandageItem.png',
@@ -367,14 +367,14 @@ monsterAttackSound.play();
 function handleStep() {
   switch (gameStep) {
     case 1:
-      enemyOverlay.src = 'images/ghoul.png';
+      enemyOverlay.src = 'images/Ghoul.png';
       enemyOverlay.style.display = 'block';
       break;
     case 2:
       enemyOverlay.style.display = 'none';
       break;
     case 3:
-      enemyOverlay.src = 'images/ghoul2.png';
+      enemyOverlay.src = 'images/Ghoul2.png';
       enemyOverlay.style.display = 'block';
 monsterAttackSound.currentTime = 0;
 monsterAttackSound.play();
@@ -387,7 +387,7 @@ monsterAttackSound.play();
       // Remove mask overlay after third enemy killed
       break;
     case 7:
-      enemyOverlay.src = 'images/devil.png';
+      enemyOverlay.src = 'images/Devil.png';
       enemyOverlay.style.display = 'block';
 monsterAttackSound.currentTime = 0;
 monsterAttackSound.play();

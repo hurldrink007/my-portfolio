@@ -431,11 +431,11 @@
     const cortanaImg = document.getElementById('cortana-img');
 
     const imagePaths = [
-        'images/cortanaopen.png',
-        'images/cortanaclosed.png',
-        'images/cortanaopen2.png',
-        'images/cortanaclosed.png',
-        'images/cortanaopen3.png'
+        'images/cortanaOpen.png',
+        'images/cortanaClosed.png',
+        'images/cortanaOpen2.png',
+        'images/cortanaClosed.png',
+        'images/cortanaOpen3.png'
     ];
 
     const scareImages = ['images/cortanaScare.png', 'images/cortanaScare2.png'];
@@ -562,5 +562,15 @@
     cortanaButton.addEventListener('click', () => {
         playVoiceLine();
     });
+
+    document.querySelectorAll('.map-room').forEach(room => {
+        room.addEventListener('click', () => {
+            const url = room.getAttribute('data-url');
+            if (url) {
+                window.location.href = url;
+            }
+        });
+    });
+
 
 };
