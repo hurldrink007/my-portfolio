@@ -18,7 +18,7 @@
 
         if (prevBtn) prevBtn.classList.toggle('enabled', currentIndex > 0);
         if (nextBtn) nextBtn.classList.toggle('enabled', currentIndex < slides.length - 1);
-        if (backBtn) backBtn.classList.toggle("enabled", window.location.pathname !== "/" && !window.location.pathname.includes("index.html"));
+        if (backBtn) backBtn.classList.toggle("enabled", !isHomePage());
 
         const selectedProject = document.querySelector('.project.selected');
         const pageURL = selectedProject ? selectedProject.getAttribute('data-url') : null;
@@ -115,6 +115,12 @@
         });
     }
 
+    function isHomePage() {
+        const path = window.location.pathname;
+        return path === "/" || path.endsWith("/index.html") || path.endsWith("index.html");
+    }
+
+
     const backButton = document.getElementById('back');
     if (backButton) {
         backButton.addEventListener("click", () => {
@@ -122,8 +128,7 @@
             document.body.style.transition = "opacity 1s ease-out";
             document.body.style.opacity = "0";
             setTimeout(() => {
-                const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
-                if (isHomePage && document.body.classList.contains('chaos-active')) {
+                if (isHomePage() && document.body.classList.contains('chaos-active')) {
                     window.location.href = "cortana.html";
                 } else {
                     window.location.href = "index.html";
