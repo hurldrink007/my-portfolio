@@ -96,25 +96,25 @@
 </html>
 
 <script>
-    const heartIcon = document.getElementById('heartIcon');
-    const currentPage = window.location.pathname;
+const heartIcon = document.getElementById('heartIcon');
+const chaosButton = document.getElementById('chaosButton');
 
-    function activateChaosMode() {
-        document.body.classList.add('chaos-mode');
+function isOnValltorPage() {
+    const path = window.location.pathname;
+    return path.includes('valtor.html');
+}
 
-        // Only show heart icon if on valtor.html
-        if (currentPage.includes('valtor.html')) {
-            heartIcon.style.display = 'inline';
-        }
-    }
+function updateHeartIconVisibility() {
+    const isChaos = document.body.classList.contains('chaos-mode');
+    heartIcon.style.display = (isChaos && isOnValltorPage()) ? 'inline' : 'none';
+}
 
-    // Optional: if chaos mode persists or is toggled
-    document.getElementById('chaosButton').addEventListener('click', () => {
-        activateChaosMode();
-    });
+chaosButton.addEventListener('click', () => {
+    document.body.classList.toggle('chaos-mode');
+    updateHeartIconVisibility();
+});
 
-    // When heart icon is clicked, go to heart.html
-    heartIcon.addEventListener('click', () => {
-        window.location.href = 'heart.html';
-    });
+heartIcon.addEventListener('click', () => {
+    window.location.href = 'heart.html';
+});
 </script>

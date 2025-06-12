@@ -213,7 +213,7 @@
     ];
 
     const chaosSongs = [
-        { title: "Elusin 88.4 Bpm A#m", src: "songs/madness.mp3", number: 5 }
+        { title: "Elusin 88.4 Bpm A#m", src: "songs/elusin.mp3", number: 5 }
     ];
 
     let songs = normalSongs;
