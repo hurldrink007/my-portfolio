@@ -158,23 +158,24 @@ button {
     margin-top: 780px;
 }
 
-#forw {
-    left: 286px;
-    bottom: -10px;
-}
-
-#back {
-    left: 286px;
-    bottom: -50px;
-}
-
 #prev {
-    left: 264px;
+    left: 14vw;
 }
 
 #next {
-    left: 309px;
+    left: 16vw;
 }
+
+#forw {
+    left: 14.98vw;
+    bottom: -1vh;
+}
+
+#back {
+    left: 14.95vw;
+    bottom: -5.5vh;
+}
+
 
 .carousel-track-wrapper {
     width: 600px; /* still only "views" one */
