@@ -153,6 +153,13 @@ button {
         opacity: 0.7;
     }
 
+.arrow-button.disabled, .arrow-button:not(.enabled) {
+    opacity: 0.5;
+    pointer-events: none; /* disables mouse events */
+    cursor: default;
+}
+
+
 
 .carousel-track-wrapper {
     width: 600px; /* still only "views" one */
@@ -603,9 +610,8 @@ button {
 
 
 .shuffle-button {
-
     margin-right: -145px;
-    margin-top: 185px;
+    margin-top: -5px;
     transform: translateX(-30px); /* Example: move left */
 }
     .shuffle-button img {
@@ -614,13 +620,13 @@ button {
     }
 
 .loop-button {
-    margin-top: 185px;
+    margin-top: -5px;
     margin-right: 95px;
     transform: translateY(5px); /* Example: move down slightly */
 }
 
 .soundcloud-button {
-    margin-top: 195px;
+    margin-top: 5px;
     margin-right: 65px;
     transform: translateX(30px); /* Example: move right */
 }

@@ -2,9 +2,7 @@
     const buttons = document.querySelectorAll('.arrow-button');
     const forwardButton = document.getElementById('forw');
 
-    // Start all buttons disabled
     buttons.forEach(button => button.classList.remove('enabled'));
-    if (forwardButton) forwardButton.classList.remove('enabled');
 
     setTimeout(() => {
         const carousel = document.getElementById('carousel');
@@ -16,14 +14,53 @@
         const nextBtn = document.getElementById('next');
         const backBtn = document.getElementById('back');
 
-        if (prevBtn) prevBtn.classList.toggle('enabled', currentIndex > 0);
-        if (nextBtn) nextBtn.classList.toggle('enabled', currentIndex < slides.length - 1);
-        if (backBtn) backBtn.classList.toggle("enabled", !isHomePage());
+        // Enable prevBtn only if currentIndex > 0 (there is a previous slide)
+        if (prevBtn) {
+            if (currentIndex > 0) {
+                prevBtn.classList.add('enabled');
+                prevBtn.disabled = false;
+            } else {
+                prevBtn.classList.remove('enabled');
+                prevBtn.disabled = true;
+            }
+        }
 
+        // Enable nextBtn only if currentIndex < last slide index (there is a next slide)
+        if (nextBtn) {
+            if (currentIndex < slides.length - 1) {
+                nextBtn.classList.add('enabled');
+                nextBtn.disabled = false;
+            } else {
+                nextBtn.classList.remove('enabled');
+                nextBtn.disabled = true;
+            }
+        }
+
+        // Enable backBtn only if NOT home page OR if in chaos mode
+        if (backBtn) {
+            if (!isHomePage() || isChaosMode()) {
+                backBtn.classList.add('enabled');
+                backBtn.classList.remove('disabled');
+            } else {
+                backBtn.classList.remove('enabled');
+                backBtn.classList.add('disabled');
+            }
+        }
+
+        // Enable forwardButton only if selected project has a link (data-url)
         const selectedProject = document.querySelector('.project.selected');
         const pageURL = selectedProject ? selectedProject.getAttribute('data-url') : null;
-        if (forwardButton) forwardButton.classList.toggle('enabled', !!pageURL);
+        if (forwardButton) {
+            if (pageURL) {
+                forwardButton.classList.add('enabled');
+                forwardButton.disabled = false;
+            } else {
+                forwardButton.classList.remove('enabled');
+                forwardButton.disabled = true;
+            }
+        }
     }, 50);
+
 
     const track = document.getElementById('carousel');
     if (!track) return;
