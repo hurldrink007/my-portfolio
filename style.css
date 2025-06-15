@@ -399,12 +399,12 @@ button {
 }
 
 .ipod-container {
+    position: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 42%;
+    top: 49.8%;
+    left: 47.45%;
     transform: translate(-50%, -50%);
     width: 400px; /* Set a reasonable width */
     height: auto;
@@ -576,12 +576,11 @@ button {
     }
 
 .music-controls {
-    position: absolute;
-    top: 0; /* or whatever anchors it properly */
+    position: fixed;
+    top: 23%;
     width: 100%; /* ensures flex children can space out */
     display: flex;
     justify-content: center;
-    margin-top: -50px;
     z-index: 10; /* optional: make sure it's above other stuff */
 }
 
