@@ -552,6 +552,7 @@ button {
 }
 
 #download-btn {
+    position: absolute;
     background: none;
     border: none;
     cursor: pointer;
