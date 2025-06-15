@@ -102,79 +102,56 @@ button {
     align-content: center;
 }
 
-.arrow-button {
-    background: none;
-    border: none;
-    z-index: 10;
-    display: inline-block;
-    opacity: 0.3; /* ✅ Start in disabled state */
-    pointer-events: none; /* ✅ Prevent clicking */
-    transition: opacity 0.2s ease-in-out; /* ✅ Smooth fade effect */
-    transition: filter 0.15s ease-in-out; /* ✅ Smooth darkening effect */
-}
-
-    .arrow-button:active {
-        filter: brightness(60%); /* ✅ Darkens button slightly */
-    }
-
-.arrow-button {
-    opacity: 0.3; /* ✅ Default disabled state */
-    pointer-events: none; /* ✅ Prevent clicking */
-    transition: opacity 0.3s ease-in-out, filter 0.15s ease-in-out; /* ✅ Ensures fading effect */
-}
-
-    .arrow-button.enabled {
-        opacity: 1; /* ✅ Smooth transition to enabled */
-        pointer-events: auto; /* ✅ Allow clicking */
-    }
-
-    .arrow-button.disabled {
-        filter: opacity(80%);
-        pointer-events: none;
-        cursor: default;
-    }
-
-    /* Ensure clickable area matches image */
-    .arrow-button img {
-        width: 30px;
-        height: auto;
-        display: block; /* ✅ Avoid extra spacing */
-        pointer-events: none; /* ✅ Prevent extra hover issues */
-    }
-
-.carousel-buttons {
-    display: flow;
-    justify-content: center;
+.control-panel {
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: grid;
+    grid-template-areas:
+        ". forw ."
+        "prev . next"
+        ". back .";
+    gap: 21px;
     align-items: center;
-    gap: 50px;
-    margin-top: 780px;
-}
-
-.advance-buttons {
-    display: flow;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    margin-top: 780px;
-}
-
-#prev {
-    left: 14vw;
-}
-
-#next {
-    left: 16vw;
+    justify-items: center;
+    z-index: 1000;
 }
 
 #forw {
-    left: 14.98vw;
-    bottom: -1vh;
+    grid-area: forw;
+}
+
+#prev {
+    grid-area: prev;
+}
+
+#next {
+    grid-area: next;
 }
 
 #back {
-    left: 14.95vw;
-    bottom: -5.5vh;
+    grid-area: back;
 }
+
+.control-panel .arrow-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: filter 0.15s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+    .control-panel .arrow-button img {
+        width: 30px;
+        height: 30px;
+        display: block;
+        pointer-events: none;
+    }
+
+    .control-panel .arrow-button:hover {
+        filter: brightness(80%);
+        opacity: 0.7;
+    }
 
 
 .carousel-track-wrapper {
