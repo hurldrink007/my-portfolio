@@ -176,8 +176,7 @@ button {
     justify-content: center;
     align-items: center;
     overflow: visible; /* Make sure this also allows overflow */
-    position: relative;
-
+    position: fixed;
 }
 
 .carousel-track {
@@ -377,6 +376,7 @@ button {
     }
 
 .instagram-button img {
+    position: fixed;
     width: 25px;
     height: auto;
     margin-left: 5px;
@@ -392,6 +392,7 @@ button {
     }
 
 .instagram-button {
+    position: fixed;
     background: none;
     border: none;
     cursor: pointer;
@@ -414,13 +415,13 @@ button {
 
 
 .ipod {
-    position: absolute; /* Enables layering */
+    position: fixed; /* Enables layering */
     width: 100%; /* Ensures both images match the container size */
     height: auto;
 }
 
 .audio-overlay {
-    position: absolute; /* Enables layering */
+    position: fixed; /* Enables layering */
     width: 30%; /* Ensures both images match the container size */
     height: auto;
     left: 55%;
@@ -429,7 +430,7 @@ button {
 }
 
 .square-overlay {
-    position: absolute; /* Enables layering */
+    position: fixed; /* Enables layering */
     width: 53%; /* Ensures both images match the container size */
     height: auto;
     left: 35%;
@@ -438,7 +439,7 @@ button {
 }
 
 .ipod-ui {
-    position: absolute;
+    position: fixed;
     top: 50.3%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -465,6 +466,7 @@ button {
     }
 
 .controls button {
+    position: fixed;
     background: none;
     border: none;
     cursor: pointer;
@@ -633,6 +635,7 @@ button {
 
 
 .chaos-button {
+    position: fixed;
     top: 13px;
     left: -27px; /* Adjust placement */
     background: none;
