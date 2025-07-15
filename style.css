@@ -94,12 +94,15 @@ button {
     border-width: 0 3px 3px 0;
     cursor: pointer;
     z-index: 10;
-    color: black;
+    color: none;
     position: absolute;
     transform: translateY(-50%);
     user-select: none;
-
+    border: none;
+    box-shadow: none !important;
+    filter: none !important;
     align-content: center;
+    background: transparent;
 }
 
 .control-panel {
@@ -379,7 +382,7 @@ button {
     position: fixed;
     width: 25px;
     height: auto;
-    margin-left: 5px;
+    margin-left: -20px;
     margin-top: 5px;
     vertical-align: middle;
     opacity: 0.4;
@@ -400,12 +403,12 @@ button {
 }
 
 .ipod-container {
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
     top: 49.8%;
-    left: 47.45%;
+    left: 42%;
     transform: translate(-50%, -50%);
     width: 400px; /* Set a reasonable width */
     height: auto;
@@ -466,7 +469,7 @@ button {
     }
 
 .controls button {
-    position: fixed;
+    position: absolute;
     background: none;
     border: none;
     cursor: pointer;
@@ -535,16 +538,19 @@ button {
 }
 
 #progress-container {
+    position: fixed; /* Lock to the viewport */
+    bottom: 50px; /* Always 50px from the bottom of the screen */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
     width: 70%;
     height: 3px;
-    background: #ddd; /* Background of the progress bar */
-    position: absolute;
-    bottom: 50px; /* Adjust based on your layout */
-    left: 50%;
-    transform: translateX(-50%);
+    background: #ddd;
     border-radius: 5px;
     overflow: hidden;
+    z-index: 9999; /* Ensure it's above other elements */
+    pointer-events: none; /* Optional: lets clicks pass through if needed */
 }
+
 
 #progress-bar {
     width: 0%;
@@ -636,18 +642,23 @@ button {
 
 .chaos-button {
     position: fixed;
-    top: 13px;
-    left: -27px; /* Adjust placement */
-    background: none;
-    border: none;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: opacity 0.3s ease-in-out;
+    width: 25px;
+    height: auto;
+    margin-left: -50px;
+    margin-top: 13.5px;
+    vertical-align: middle;
+    opacity: 0.4;
+    transition: opacity 0.3s ease; /* Smooth fade transition */
+    display: inline-block;
+    box-shadow: none !important;
+    filter: none !important;
 }
 
     .chaos-button img {
         width: 25px; /* Adjust size */
         height: auto;
+        box-shadow: none !important;
+        filter: none !important;
     }
 
     .chaos-button:hover {
