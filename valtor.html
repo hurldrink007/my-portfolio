@@ -64,17 +64,35 @@
     padding: 0 20px;
   "
 >
+  <section id="imageSection" style="max-width: 1200px; margin: 20px auto 60px auto; padding: 0 20px;">
   <style>
+    /* Desktop grid with hover scale */
     @media (hover: hover) and (pointer: fine) {
+      #imageSection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 32px;
+      }
       .hover-scale:hover {
         transform: scale(3.05);
         transition: transform 0.3s ease;
         cursor: pointer;
       }
     }
-    /* Ensure smooth transition always */
-    .hover-scale {
-      transition: transform 0.3s ease;
+    /* Mobile: show only one image, hide others */
+    @media (hover: none), (max-width: 600px) {
+      #imageSection {
+        display: block;
+        text-align: center;
+      }
+      .hover-scale {
+        width: 90vw !important;
+        max-width: 400px;
+        margin: 0 auto;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: default;
+      }
     }
   </style>
 
@@ -82,33 +100,59 @@
     src="images/valtorblood.jpg"
     alt="Valtor Blood"
     class="hover-scale"
-    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+    style="width: 100%; height: auto; display: none;"
   />
   <img
     src="images/valtorbook.jpg"
     alt="Valtor Book"
     class="hover-scale"
-    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+    style="width: 100%; height: auto; display: none;"
   />
   <img
     src="images/valtorboss.jpg"
     alt="Valtor Boss"
     class="hover-scale"
-    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+    style="width: 100%; height: auto; display: none;"
   />
   <img
     src="images/valtoringame.jpg"
     alt="Valtor In Game"
     class="hover-scale"
-    style="width: 100%; height: auto; display: block; border-radius: 8px;"
-  />
-  <img
-    src="images/valtorpool.jpg"
-    alt="Valtor In Pool"
-    class="hover-scale"
-    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+    style="width: 100%; height: auto; display: none;"
   />
 </section>
+
+<script>
+  const images = document.querySelectorAll('#imageSection img.hover-scale');
+  let currentIndex = 0;
+
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.style.display = i === index ? 'block' : 'none';
+    });
+  }
+
+  function cycleImages() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  // Detect mobile screen and start cycling
+  function setup() {
+    const isMobile = window.matchMedia('(hover: none), (max-width: 600px)').matches;
+    if (isMobile) {
+      showImage(currentIndex);
+      setInterval(cycleImages, 3000); // cycle every 3 seconds
+    } else {
+      // On desktop show all images by default
+      images.forEach(img => (img.style.display = 'block'));
+    }
+  }
+
+  window.addEventListener('load', setup);
+  window.addEventListener('resize', setup);
+</script>
+
 
 
 
