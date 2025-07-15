@@ -255,8 +255,9 @@ button {
     }
 
 .gameImg {
-    position: relative;
+    position: fixed;
     width: 600px;
+    left: 1190px;
     height: 100%;
     object-fit: contain;
     flex-shrink: 0;
@@ -419,6 +420,7 @@ button {
 
 .ipod {
     position: fixed; /* Enables layering */
+    left: -6%;
     width: 100%; /* Ensures both images match the container size */
     height: auto;
 }
@@ -427,7 +429,7 @@ button {
     position: fixed; /* Enables layering */
     width: 30%; /* Ensures both images match the container size */
     height: auto;
-    left: 55%;
+    left: 50%;
     margin-bottom: 50%;
     opacity: .8;
 }
@@ -436,7 +438,7 @@ button {
     position: fixed; /* Enables layering */
     width: 53%; /* Ensures both images match the container size */
     height: auto;
-    left: 35%;
+    left: 30%;
     margin-bottom: 40%;
     opacity: .8;
 }
@@ -449,7 +451,7 @@ button {
     width: 250px;
     padding: 10px;
     color: black;
-    opacity: .5;
+    opacity: 1;
     font-size: .5rem;
     text-align: center;
     text-shadow: none;
@@ -487,21 +489,21 @@ button {
 
 #prev-btn {
     position: absolute;
-    left: 26px;
-    bottom: -68px;
+    left: 125px;
+    bottom: -80px;
 }
 
 #play-pause-btn {
     position: absolute;
-    left: 91px;
-    bottom: -99px;
+    left: 190px;
+    bottom: -111.3px;
     transform: translateX(-50%);
 }
 
 #next-btn {
     position: absolute;
-    right: 97px;
-    bottom: -70px;
+    right: 146px;
+    bottom: -82px;
 }
 
 #prev-btn,
@@ -529,8 +531,8 @@ button {
 #song-title {
     text-align: left;
     position: absolute;
-    top: -45px;
-    left: 36px; /* Ensures it stays within bounds */
+    top: -60px;
+    left: 140px; /* Ensures it stays within bounds */
     max-width: 90%; /* Prevents text from overflowing */
     white-space: nowrap; /* Keeps text in one line */
     overflow: hidden; /* Hides excess text */
@@ -539,10 +541,10 @@ button {
 
 #progress-container {
     position: fixed; /* Lock to the viewport */
-    bottom: 50px; /* Always 50px from the bottom of the screen */
-    left: 50%; /* Center horizontally */
+    bottom: 42px; /* Always 50px from the bottom of the screen */
+    left: 55%; /* Center horizontally */
     transform: translateX(-50%);
-    width: 70%;
+    width: 40%;
     height: 3px;
     background: #ddd;
     border-radius: 5px;
@@ -574,13 +576,13 @@ button {
         width: 30px; /* Adjust as needed */
         height: 30px;
         display: block;
-        margin-bottom: -1200%;
-        margin-left: -400%;
+        margin-bottom: 870%;
+        margin-left: 140%;
     }
 
 
     #download-btn:hover {
-        background: white;
+        background: none;
         color: black;
     }
 
@@ -618,8 +620,8 @@ button {
 
 
 .shuffle-button {
-    margin-right: -145px;
-    margin-top: -5px;
+    margin-right: -195px;
+    margin-top: -260px;
     transform: translateX(-30px); /* Example: move left */
 }
     .shuffle-button img {
@@ -628,14 +630,14 @@ button {
     }
 
 .loop-button {
-    margin-top: -5px;
-    margin-right: 95px;
+    margin-right: 45px;
+    margin-top: -260px;
     transform: translateY(5px); /* Example: move down slightly */
 }
 
 .soundcloud-button {
-    margin-top: 5px;
-    margin-right: 65px;
+    margin-right: 17px;
+    margin-top: -248px;
     transform: translateX(30px); /* Example: move right */
 }
 
