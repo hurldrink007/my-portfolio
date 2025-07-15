@@ -10,6 +10,7 @@
 <body>
 
 <header>
+
     <button id="mapButton" class="map-button">
         <img src="images/mapIcon.png" alt="Map Icon" />
     </button>
@@ -20,27 +21,193 @@
 </a>
 </header>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>dustin hurlbrink | valtor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,400;0,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+    <button id="mapButton" class="map-button">
+        <img src="images/mapIcon.png" alt="Map Icon" />
+    </button>
+<button id="chaosButton" class="chaos-button">
+    <img src="images/deadpan2.png" alt="Chaos Mode" />
+</button><a href="https://www.instagram.com/dustin.hurlbrink/" target="_blank" class="instagram-button">
+  <img src="images/instagram.png" alt="Instagram Profile" />
+</a>
+</header>
+
+
 <div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
   <div class="carousel-track-wrapper">
 <div class="carousel-track" id="carousel">
-    <div class="gameImg">
-        <img src="images/valtorblood.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtorbook.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtorpool.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtorboss.jpg" alt="Valtor Game" />
-    </div>
-    <div class="gameImg">
-        <img src="images/valtoringame.jpg" alt="Valtor Game" />
+    <div class="project">
     </div>
 </div>
 
   </div>
+
+<section
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 32px;
+    width: 90vw;
+    max-width: 1200px;
+    margin: 20px auto 60px auto;
+    padding: 0 20px;
+  "
+>
+  <style>
+    @media (hover: hover) and (pointer: fine) {
+      .hover-scale:hover {
+        transform: scale(3.05);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+    }
+    /* Ensure smooth transition always */
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+  </style>
+
+  <img
+    src="images/valtorblood.jpg"
+    alt="Valtor Blood"
+    class="hover-scale"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+  />
+  <img
+    src="images/valtorbook.jpg"
+    alt="Valtor Book"
+    class="hover-scale"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+  />
+  <img
+    src="images/valtorboss.jpg"
+    alt="Valtor Boss"
+    class="hover-scale"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+  />
+  <img
+    src="images/valtoringame.jpg"
+    alt="Valtor In Game"
+    class="hover-scale"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+  />
+  <img
+    src="images/valtorpool.jpg"
+    alt="Valtor In Pool"
+    class="hover-scale"
+    style="width: 100%; height: auto; display: block; border-radius: 8px;"
+  />
+</section>
+
+
+
+
+
+    <div class="control-panel">
+        <button id="prev" class="arrow-button">
+            <img src="images/D-PadLeft.png" alt="Previous" />
+        </button>
+        <button id="next" class="arrow-button">
+            <img src="images/D-PadRight.png" alt="Next" />
+        </button>
+        <button id="forw" class="arrow-button">
+            <img src="images/D-PadUp.png" alt="Forward" />
+        </button>
+        <button id="back" class="arrow-button">
+            <img src="images/D-PadDown.png" alt="Back" />
+        </button>
+    </div>
+
+    <section class="site-map">
+        <div class="map-container">
+            <div class="map-room" data-url="home.html">home.log</div>
+            <div class="map-room" data-url="valtor.html">valtor.log</div>
+            <div class="map-room" data-url="music.html">music.log</div>
+            <div class="map-room" data-url="handheld.html">handheld.log</div>
+            <div class="map-room" data-url="contact.html">contact.log</div>
+		<div class="map-room" data-url="error.html">h****.log</div>
+		<div class="map-room" data-url="error.html">c******.log</div>
+		<div class="map-room" data-url="error.html">v****.log</div>
+		<div class="map-room" data-url="error.html">e**.log</div>
+        </div>
+    </section>
+
+<footer>
+  <div class="footer-text">
+    <div class="location-text">
+      <h4 class="noto-thin">valtor.log</h4>
+      <h4 class="noto-thin">a game by dustin hurlbrink</h4>
+    </div>
+    <button id="contactButton" class="contact-button">
+      <h4 class="noto-thin">contact</h4>
+    </button>
+
+    <!-- Heart Icon (initially hidden) -->
+    <img id="heartIcon" src="images/heartIcon.png" alt="Heart Icon"
+         style="display: none; cursor: pointer;" />
+  </div>
+</footer>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+<script>
+const heartIcon = document.getElementById('heartIcon');
+const chaosButton = document.getElementById('chaosButton');
+
+function isOnValltorPage() {
+    const path = window.location.pathname;
+    return path.includes('valtor.html');
+}
+
+function updateHeartIconVisibility() {
+    const isChaos = document.body.classList.contains('chaos-mode');
+    heartIcon.style.display = (isChaos && isOnValltorPage()) ? 'inline' : 'none';
+}
+
+chaosButton.addEventListener('click', () => {
+    document.body.classList.toggle('chaos-mode');
+    updateHeartIconVisibility();
+});
+
+heartIcon.addEventListener('click', () => {
+    window.location.href = 'heart.html';
+});
+</script>
+
+<script>
+document.querySelectorAll('.map-room').forEach(room => {
+    room.addEventListener('click', () => {
+        const url = room.getAttribute('data-url');
+        if (url) {
+            window.location.href = url;
+        }
+    });
+});
+</script>
+
+<div class="carousel-container" style="position: relative; width: 600px; margin: auto;">
+  <div class="carousel-track-wrapper">
+<div class="carousel-track" id="carousel">
+    <div class="project">
+    </div>
+</div>
+
+  </div>
+
 
     <div class="control-panel">
         <button id="prev" class="arrow-button">
