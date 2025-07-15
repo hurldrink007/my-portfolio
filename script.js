@@ -246,11 +246,16 @@
         { title: "Point Of View (o0o)", src: "songs/pointOfView.mp3", number: 1 },
         { title: "River Symphony", src: "songs/symphony.mp3", number: 2 },
         { title: "Schizo", src: "songs/schizo.mp3", number: 3 },
-        { title: "Keeper", src: "songs/keeper.mp3", number: 4 }
+        { title: "Keeper", src: "songs/keeper.mp3", number: 4 },
+        { title: "Danny", src: "songs/danny.wav", number: 1 },
+        { title: "Glass", src: "songs/grit.mp3", number: 2 },
+        { title: "Life", src: "songs/life.mp3", number: 3 },
+        { title: "Congratulations", src: "songs/typeshit.mp3", number: 4 },
+        { title: "Elusin", src: "songs/elusinSex.mp3", number: 1 }
     ];
 
     const chaosSongs = [
-        { title: "Elusin 88.4 Bpm A#m", src: "songs/elusin.mp3", number: 5 }
+        { title: "Elusin 88.4 Bpm A#m", src: "songs/error.mp3", number: 5 }
     ];
 
     let songs = normalSongs;
