@@ -247,7 +247,7 @@
         { title: "River Symphony", src: "songs/symphony.mp3", number: 2 },
         { title: "Schizo", src: "songs/schizo.mp3", number: 3 },
         { title: "Keeper", src: "songs/keeper.mp3", number: 4 },
-        { title: "Danny", src: "songs/danny.wav", number: 1 },
+        { title: "Danny", src: "songs/danny.mp3", number: 1 },
         { title: "Glass", src: "songs/grit.mp3", number: 2 },
         { title: "Life", src: "songs/life.mp3", number: 3 },
         { title: "Congratulations", src: "songs/typeshit.mp3", number: 4 },
